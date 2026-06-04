@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CyberMatch // Memory Matrix</title>
+  <!-- Google Fonts for premium UI typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Animated Cyberpunk Background -->
+  <div class="cyber-bg">
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+  </div>
+
+  <div class="app-container">
+    <header class="game-header">
+      <h1 class="glitch-title" data-text="CYBERMATCH">CYBERMATCH</h1>
+      <p class="subtitle">Neural Memory Matrix</p>
+    </header>
+
+    <!-- Top Dashboard: Game Settings -->
+    <section class="control-panel glass-panel" aria-label="Game Settings">
+      <div class="control-group">
+        <label for="difficulty-select">Matrix Size</label>
+        <select id="difficulty-select">
+          <option value="easy">Easy (4x4 Grid)</option>
+          <option value="medium" selected>Medium (6x4 Grid)</option>
+          <option value="hard">Hard (6x6 Grid)</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="theme-select">Neural Theme</label>
+        <select id="theme-select">
+          <option value="cyberpunk" selected>👾 Cyberpunk</option>
+          <option value="foods">🍕 Neo Food</option>
+          <option value="animals">🐼 Bio Animals</option>
+          <option value="space">🚀 Star Odyssey</option>
+        </select>
+      </div>
+
+      <button id="sound-toggle-btn" class="icon-btn btn-neon" aria-label="Toggle Sound">
+        <span class="btn-icon">🔊</span>
+        <span class="btn-text">Audio: On</span>
+      </button>
+    </section>
+
+    <!-- Main Game Section (Stats + Board) -->
+    <main class="main-layout">
+      <!-- Left Column / Top Row: Stats -->
+      <section class="stats-sidebar" aria-label="Game Stats">
+        <div class="stat-card glass-panel neon-border-cyan">
+          <span class="stat-label">Neural Score</span>
+          <span class="stat-value" id="score-display">0000</span>
+        </div>
+        <div class="stat-card glass-panel neon-border-magenta">
+          <span class="stat-label">Time Elapsed</span>
+          <span class="stat-value font-mono" id="timer">00:00</span>
+        </div>
+        <div class="stat-card glass-panel neon-border-yellow">
+          <span class="stat-label">Total Moves</span>
+          <span class="stat-value font-mono" id="moves">00</span>
+        </div>
+        <div class="stat-card glass-panel neon-border-green combo-inactive" id="combo-card">
+          <span class="stat-label">Combo Streak</span>
+          <span class="stat-value font-mono" id="combo-display">x1</span>
+        </div>
+      </main>
+
+      <!-- Right Column: Board -->
+      <section class="board-wrapper">
+        <div class="game-board grid-medium" id="game-board">
+          <!-- Dynamically populated by JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Dashboard: High Scores / Leaderboard -->
+    <section class="leaderboard-panel glass-panel" aria-label="Personal Best Records">
+      <h2 class="panel-title">🏆 Personal Neural Records</h2>
+      <div class="leaderboard-grid">
+        <div class="record-item">
+          <span class="record-level">Easy (4x4)</span>
+          <span class="record-data" id="record-easy">-- / --</span>
+        </div>
+        <div class="record-item">
+          <span class="record-level">Medium (6x4)</span>
+          <span class="record-data" id="record-medium">-- / --</span>
+        </div>
+        <div class="record-item">
+          <span class="record-level">Hard (6x6)</span>
+          <span class="record-data" id="record-hard">-- / --</span>
+        </div>
+      </div>
+      <div class="reset-wrapper">
+        <button id="reset-leaderboard-btn" class="text-btn">Reset Records</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Victory Glass Modal -->
+  <div class="modal" id="win-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content glass-panel neon-border-magenta">
+      <h2 id="modal-title" class="glitch-title-sm">SYNAPSE COMPLETE</h2>
+      <p class="modal-subtitle">Neural Net Match Synchronized</p>
+      
+      <div class="win-stats">
+        <div class="win-stat-item">
+          <span class="win-label">Difficulty</span>
+          <span class="win-value" id="final-difficulty">Medium</span>
+        </div>
+        <div class="win-stat-item">
+          <span class="win-label">Final Score</span>
+          <span class="win-value text-neon-green" id="final-score">0000</span>
+        </div>
+        <div class="win-stat-item">
+          <span class="win-label">Time Taken</span>
+          <span class="win-value" id="final-time">00:00</span>
+        </div>
+        <div class="win-stat-item">
+          <span class="win-label">Moves Used</span>
+          <span class="win-value" id="final-moves">00</span>
+        </div>
+      </div>
+
+      <div id="new-record-banner" class="hidden-banner">
+        🔥 NEW PERSONAL BEST DETECTED! 🔥
+      </div>
+
+      <button id="restart-btn" class="btn-neon-action">SYNCHRONIZE NEW MATRIX</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
